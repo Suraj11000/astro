@@ -1,4 +1,4 @@
----
+<!-- ---
 import Layout from "../layouts/Layout.astro";
 import GoogleAnalytics from "../components/googleAnalytics.astro";
 ---
@@ -14,24 +14,19 @@ import GoogleAnalytics from "../components/googleAnalytics.astro";
       <p>We are performing the google analytics using the ga4.</p>
     </Layout>
   </body>
-</html>
-
-<!-- <html lang="en">
+</html> -->
+<html lang="en">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3"
     ></script>
     <script>
-      {
-        `
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-
-        gtag("config", "G-56FMGB8XJ3");
-      `;
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
+      gtag("js", new Date());
+
+      gtag("config", "G-56FMGB8XJ3");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,7 +35,7 @@ import GoogleAnalytics from "../components/googleAnalytics.astro";
   <body>
     <h1>Astro</h1>
   </body>
-</html> --><!-- 
+</html><!-- 
 Stream Name
 astro
 Stream URL
