@@ -1,8 +1,58 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const GA_TRACKING_ID = "G-56FMGB8XJ3";
 ---
+
+<script
+  async
+  src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "${GA_TRACKING_ID}");
+</script>
 
 <Layout>
   <h1>About Us</h1>
   <p>We are a leading e-commerce store providing the best products.</p>
 </Layout>
+
+
+<!-- <html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3"
+    ></script>
+    <script>
+      {
+        `
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-56FMGB8XJ3");
+      `;
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+  </body>
+</html> --><!-- 
+Stream Name
+astro
+Stream URL
+https://astro-kappa-silk.vercel.app/
+Stream ID
+8568890882
+Measurement Id
+G-56FMGB8XJ3 
+-->
