@@ -1,7 +1,6 @@
 ---
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "Products", href: "/products" },
   { name: "Cart", href: "/cart" },
   { name: "Checkout", href: "/checkout" },
   { name: "About Us", href: "/about" },
@@ -30,6 +29,7 @@ const navItems = [
     display: flex;
     gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
   }
   nav a {
@@ -50,5 +50,6 @@ const navItems = [
     color: white;
     background-color: black;
     align-items: center;
+    flex-wrap: wrap;
   }
 </style>
