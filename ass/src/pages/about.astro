@@ -1,39 +1,8 @@
-<!-- ---
-const name = "suraj";
-const age = 23
-const obj = {
-    name : "suraj shinde",
-    age : 23,
-    skills : ['react', 'svelte', 'astro']
-}
-const isVisible = false;
-
-const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h')
-
-const data = await res.json();
+---
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>about</h1>
-    {
-        isVisible
-        ?<h2>see more</h2>
-        <h3>name is {name}</h3>
-        <h3>age is {age}</h3>
-        <h1>{obj.skills[0]}</h1>
-        : <h1>Nothing to show</h1>
-    }    
-    {
-        data.map(item=>(
-            <li>{item.name}</li>
-        ))
-    }
-
-</body>
-</html> -->
+<Layout>
+  <h1>About Us</h1>
+  <p>We are a leading e-commerce store providing the best products.</p>
+</Layout>
