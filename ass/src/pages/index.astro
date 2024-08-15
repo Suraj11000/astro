@@ -1,64 +1,24 @@
-<!-- ---
-import Layout from "../layouts/Layout.astro";
-import GoogleAnalytics from "../components/googleAnalytics.astro";
 ---
-
-<html>
-  <head>
-    <title>My Astro Site</title>
-    <GoogleAnalytics />
-  </head>
-  <body>
-    <Layout>
-      <h1>welcome to astro Analytics</h1>
-      <p>We are performing the google analytics using the ga4.</p>
-    </Layout>
-  </body>
-</html> -->
-
----
-import Navbar from "../components/Navbar.astro"
+import Navbar from "../components/Navbar.astro";
 ---
 
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3"
-    ></script>
-    <script>
+    <!-- Google Analytics Global Site Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3"></script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-56FMGB8XJ3");
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-56FMGB8XJ3');
     </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Home - Astro E-commerce</title>
   </head>
   <body>
     <Navbar/>
-    <h1>hii</h1>
+    <h1>Welcome to Astro E-commerce</h1>
   </body>
 </html>
-
-<style>
-  	html {
-		font-family: system-ui, sans-serif;
-		background: #d8d0d0;
-		background-size: 224px;
-	}
-</style>
-
-
-<!-- 
-Stream Name
-astro
-Stream URL
-https://astro-kappa-silk.vercel.app/
-Stream ID
-8568890882
-Measurement Id
-G-56FMGB8XJ3 
--->
