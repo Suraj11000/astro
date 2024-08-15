@@ -1,69 +1,71 @@
 ---
+
 ---
 
+<form
+  action="#"
+  method="post"
+  onsubmit="gtag('event', 'submit', {'event_category': 'Checkout', 'event_label': 'Payment Submitted'})"
+>
+  <div>
+    <label for="name">Name on Card:</label>
+    <input type="text" id="name" name="name" required />
+  </div>
 
+  <div>
+    <label for="card-number">Card Number:</label>
+    <input type="text" id="card-number" name="card-number" required />
+  </div>
 
-<form action="#" method="post">
-    <div>
-      <label for="name">Name on Card:</label>
-      <input type="text" id="name" name="name" required />
-    </div>
+  <div>
+    <label for="expiry-date">Expiry Date:</label>
+    <input type="month" id="expiry-date" name="expiry-date" required />
+  </div>
 
-    <div>
-      <label for="card-number">Card Number:</label>
-      <input type="text" id="card-number" name="card-number" required />
-    </div>
+  <div>
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv" required />
+  </div>
 
-    <div>
-      <label for="expiry-date">Expiry Date:</label>
-      <input type="month" id="expiry-date" name="expiry-date" required />
-    </div>
+  <button type="submit">Submit Payment</button>
+</form>
 
-    <div>
-      <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" name="cvv" required />
-    </div>
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+  }
 
-    <button type="submit">Submit Payment</button>
-  </form>
+  div {
+    margin-bottom: 1rem;
+  }
 
-  <style>
-    form {
-      display: flex;
-      flex-direction: column;
-      max-width: 400px;
-      margin: auto;
-    }
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
 
-    div {
-      margin-bottom: 1rem;
-    }
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
-    label {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
+  button {
+    padding: 0.75rem;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
 
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button {
-      padding: 0.75rem;
-      background-color: #0070f3;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    button:hover {
-      background-color: #005bb5;
-    }
-  </style>
-
+  button:hover {
+    background-color: #005bb5;
+  }
+</style>
