@@ -1,10 +1,4 @@
----
-
----
-
-<form
-  onsubmit="handleSubmit(event)"
->
+<form onsubmit="handleSubmit(event)">
   <div>
     <label for="name">Name on Card:</label>
     <input type="text" id="name" name="name" required />
@@ -39,11 +33,15 @@
     // Log the form data to the console (or do something with it)
     console.log('Form submitted:', data);
 
-    // Send Google Analytics event
-    gtag('event', 'submit', {
-      'event_category': 'Checkout',
-      'event_label': 'Payment Submitted'
-    });
+    // Check if gtag is defined before calling it
+    if (typeof gtag === 'function') {
+      gtag('event', 'submit', {
+        'event_category': 'Checkout',
+        'event_label': 'Payment Submitted'
+      });
+    } else {
+      console.error('gtag is not defined');
+    }
 
     // Optionally, you can display a success message or reset the form
     alert('Form submitted successfully!');
