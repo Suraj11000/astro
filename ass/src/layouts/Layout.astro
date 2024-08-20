@@ -13,21 +13,12 @@ import Navbar from "../components/Navbar.astro";
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3"
     ></script>
     <script is:inline>
-      if (Astro.isBrowser) {
-        if (
-          window.location.hostname !== "localhost" &&
-          window.location.hostname !== "127.0.0.1" 
-        ) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
-          gtag("config", "G-56FMGB8XJ3");
-        } else {
-          console.log("Google Analytics tracking is disabled for localhost.");
-        }
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
+      gtag("js", new Date());
+      gtag("config", "G-56FMGB8XJ3");
     </script>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -70,3 +61,22 @@ import Navbar from "../components/Navbar.astro";
       monospace;
   }
 </style>
+
+
+
+
+<!-- if (Astro.isBrowser) {
+  if (
+    window.location.hostname !== "localhost" &&
+    window.location.hostname !== "127.0.0.1" 
+  ) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-56FMGB8XJ3");
+  } else {
+    console.log("Google Analytics tracking is disabled for localhost.");
+  }
+} -->

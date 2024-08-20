@@ -2,17 +2,17 @@
 import Navbar from "../components/Navbar.astro";
 
 const loadAnalyticsScript = async function loadAnalyticsScript() {
-  if (!Astro.isBrowser) {
-    return; // Exit if not in the browser
-  }
+  // if (!Astro.isBrowser) {
+  //   return; // Exit if not in the browser
+  // }
 
-  if (
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1"
-  ) {
-    console.log("Google Analytics tracking is disabled for localhost.");
-    return; // Exit the function to prevent loading the script
-  }
+  // if (
+  //   window.location.hostname === "localhost" ||
+  //   window.location.hostname === "127.0.0.1"
+  // ) {
+  //   console.log("Google Analytics tracking is disabled for localhost.");
+  //   return; // Exit the function to prevent loading the script
+  // }
 
   try {
     const response = await fetch(
