@@ -13,10 +13,6 @@ const loadAnalyticsScript = async function loadAnalyticsScript() {
     console.log("Google Analytics tracking is disabled for localhost.");
     return; // Exit the function to prevent loading the script
   }
-  if (window.location.hostname !== "astro-kappa-silk.vercel.app") {
-    console.log("Google Analytics tracking is disabled for this domain.");
-    return; // Exit the function to prevent loading the script
-  }
 
   try {
     const response = await fetch(

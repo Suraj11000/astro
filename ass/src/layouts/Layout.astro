@@ -14,13 +14,10 @@ import Navbar from "../components/Navbar.astro";
     ></script>
     <script is:inline>
       if (Astro.isBrowser) {
-        // Check if the current hostname is localhost or 127.0.0.1
         if (
-          window.location.hostname === "localhost" ||
-          window.location.hostname === "127.0.0.1"
+          window.location.hostname !== "localhost" &&
+          window.location.hostname !== "127.0.0.1" 
         ) {
-          console.log("Google Analytics tracking is disabled for localhost.");
-        } else if (window.location.hostname === "astro-kappa-silk.vercel.app") {
           window.dataLayer = window.dataLayer || [];
           function gtag() {
             dataLayer.push(arguments);
@@ -28,7 +25,7 @@ import Navbar from "../components/Navbar.astro";
           gtag("js", new Date());
           gtag("config", "G-56FMGB8XJ3");
         } else {
-          console.log("Google Analytics tracking is disabled for this domain.");
+          console.log("Google Analytics tracking is disabled for localhost.");
         }
       }
     </script>
