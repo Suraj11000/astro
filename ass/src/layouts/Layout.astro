@@ -13,12 +13,24 @@ import Navbar from "../components/Navbar.astro";
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3"
     ></script>
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+      if (Astro.isBrowser) {
+        // Check if the current hostname is localhost or 127.0.0.1
+        if (
+          window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1"
+        ) {
+          console.log("Google Analytics tracking is disabled for localhost.");
+        } else if (window.location.hostname === "astro-kappa-silk.vercel.app") {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", "G-56FMGB8XJ3");
+        } else {
+          console.log("Google Analytics tracking is disabled for this domain.");
+        }
       }
-      gtag("js", new Date());
-      gtag("config", "G-56FMGB8XJ3");
     </script>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
