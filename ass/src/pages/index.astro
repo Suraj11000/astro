@@ -1,48 +1,47 @@
 ---
 import Navbar from "../components/Navbar.astro";
-
-const loadAnalyticsScript = function loadAnalyticsScript() {
-  if (!Astro.isBrowser) {
-    return; // Exit if not in the browser
-  }
-
-  const allowedHostname = "astro-kappa-silk.vercel.app";
-
-  if (
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1" ||
-    window.location.hostname !== allowedHostname
-  ) {
-    console.log("Google Analytics tracking is disabled for this hostname.");
-    return; // Exit the function to prevent loading the script
-  }
-
-  const script = document.createElement("script");
-  script.src = `https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3`;
-  script.async = true;
-  document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    window.dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-56FMGB8XJ3");
-};
-
-// Load the script
-loadAnalyticsScript();
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Astro E-commerce</title>
 
-    <!-- Inline script to fetch and execute Google Analytics script -->
+    <!-- Inline script to load Google Analytics -->
     <script is:inline>
-      { loadAnalyticsScript(); }
+      (function() {
+        // Define the function to load Google Analytics
+        async function loadAnalyticsScript() {
+          if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+            console.log("Google Analytics tracking is disabled for localhost.");
+            return; // Exit the function if on localhost
+          }
+
+          try {
+            // Dynamically load the Google Analytics script
+            const script = document.createElement("script");
+            script.src = "https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3";
+            script.async = true;
+            document.head.appendChild(script);
+
+            script.onload = () => {
+              window.dataLayer = window.dataLayer || [];
+              function gtag() {
+                window.dataLayer.push(arguments);
+              }
+              gtag("js", new Date());
+              gtag("config", "G-56FMGB8XJ3");
+            };
+          } catch (error) {
+            console.error("Failed to load Google Analytics script:", error);
+          }
+        }
+
+        // Call the function
+        loadAnalyticsScript();
+      })();
     </script>
   </head>
   <body>

@@ -1,78 +1,54 @@
 ---
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
 import Navbar from "../components/Navbar.astro";
+const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <script is:inline>
-      if (Astro.isBrowser) {
-        const allowedHostname = "astro-kappa-silk.vercel.app";
-
-        if (
-          window.location.hostname === "localhost" ||
-          window.location.hostname === "127.0.0.1" ||
-          window.location.hostname !== allowedHostname
-        ) {
-          console.log("Google Analytics tracking is disabled for this hostname.");
-        } else {
-          const script = document.createElement("script");
-          script.src = `https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3`;
-          script.async = true;
-          document.head.appendChild(script);
-
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            window.dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
-          gtag("config", "G-56FMGB8XJ3");
-        }
-      }
-    </script>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+
+    <!-- Google Analytics script -->
+    <script is:inline>
+      (function() {
+        // Define the function to load Google Analytics
+        async function loadAnalyticsScript() {
+          if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+            console.log("Google Analytics tracking is disabled for localhost.");
+            return; // Exit the function if on localhost
+          }
+
+          try {
+            // Dynamically load the Google Analytics script
+            const script = document.createElement("script");
+            script.src = "https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3";
+            script.async = true;
+            document.head.appendChild(script);
+
+            script.onload = () => {
+              window.dataLayer = window.dataLayer || [];
+              function gtag() {
+                window.dataLayer.push(arguments);
+              }
+              gtag("js", new Date());
+              gtag("config", "G-56FMGB8XJ3");
+            };
+          } catch (error) {
+            console.error("Failed to load Google Analytics script:", error);
+          }
+        }
+
+        // Call the function
+        loadAnalyticsScript();
+      })();
+    </script>
   </head>
   <body>
     <Navbar />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: #d8d0d0;
-    background-size: 224px;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>
