@@ -11,18 +11,23 @@ import Navbar from "../components/Navbar.astro";
 
     <!-- Inline script to load Google Analytics -->
     <script is:inline>
-      (function() {
+      (function () {
         // Define the function to load Google Analytics
         async function loadAnalyticsScript() {
-          if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-            console.log("Google Analytics tracking is disabled for localhost.");
+          if (
+            window.location.hostname === "localhost" ||
+            window.location.hostname === "127.0.0.1" ||
+            window.location.hostname === "astro-another-domain.vercel.app"
+          ) {
+            console.log("Google Analytics tracking is disabled for localhost and astro-another-domain.vercel.app..");
             return; // Exit the function if on localhost
           }
 
           try {
             // Dynamically load the Google Analytics script
             const script = document.createElement("script");
-            script.src = "https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3";
+            script.src =
+              "https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3";
             script.async = true;
             document.head.appendChild(script);
 

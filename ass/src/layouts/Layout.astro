@@ -15,8 +15,8 @@ const { title } = Astro.props;
       (function() {
         // Define the function to load Google Analytics
         async function loadAnalyticsScript() {
-          if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-            console.log("Google Analytics tracking is disabled for localhost.");
+          if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname === "astro-another-domain.vercel.app") {
+            console.log("Google Analytics tracking is disabled for localhost and astro-another-domain.vercel.app.");
             return; // Exit the function if on localhost
           }
 
