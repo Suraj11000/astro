@@ -10,11 +10,10 @@ import Navbar from "../components/Navbar.astro";
 <!doctype html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3"></script>
     <script is:inline>
       if (Astro.isBrowser) {
         const allowedHostname = "astro-kappa-silk.vercel.app";
-        
+
         if (
           window.location.hostname === "localhost" ||
           window.location.hostname === "127.0.0.1" ||
@@ -22,9 +21,14 @@ import Navbar from "../components/Navbar.astro";
         ) {
           console.log("Google Analytics tracking is disabled for this hostname.");
         } else {
+          const script = document.createElement("script");
+          script.src = `https://www.googletagmanager.com/gtag/js?id=G-56FMGB8XJ3`;
+          script.async = true;
+          document.head.appendChild(script);
+
           window.dataLayer = window.dataLayer || [];
           function gtag() {
-            dataLayer.push(arguments);
+            window.dataLayer.push(arguments);
           }
           gtag("js", new Date());
           gtag("config", "G-56FMGB8XJ3");
